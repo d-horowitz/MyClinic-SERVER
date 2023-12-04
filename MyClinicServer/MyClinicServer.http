@@ -1,0 +1,10 @@
+@MyClinicServer_HostAddress = https://localhost:7099
+
+GET {{MyClinicServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{MyClinicServer_HostAddress}}/api/patients
+
+###

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "lIt4ZGgAYpsTK/kNUAJaYuxCkqdKalWHj2+Y1dEgbrw=",
+  "Source": "MyClinicServer",
+  "BasePath": "_content/MyClinicServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
