@@ -1,14 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23\\MyClinicServer\\",
+  "WorkspaceRootPath": "D:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|d:\\users\\horowitz\\desktop\\myclinic\\server\\4.12.23\\myclinicserver\\controllers\\patientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|solutionrelative:controllers\\patientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|d:\\users\\horowitz\\desktop\\myclinic\\server\\4.12.23 (2)\\myclinicserver\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|solutionrelative:appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|d:\\users\\horowitz\\desktop\\myclinic\\server\\4.12.23\\myclinicserver\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|d:\\users\\horowitz\\desktop\\myclinic\\server\\4.12.23 (2)\\myclinicserver\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|solutionrelative:controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|d:\\users\\horowitz\\desktop\\myclinic\\server\\4.12.23 (2)\\myclinicserver\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|solutionrelative:controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|d:\\users\\horowitz\\desktop\\myclinic\\server\\4.12.23 (2)\\myclinicserver\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|solutionrelative:patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|d:\\users\\horowitz\\desktop\\myclinic\\server\\4.12.23 (2)\\myclinicserver\\workday.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|solutionrelative:workday.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|d:\\users\\horowitz\\desktop\\myclinic\\server\\4.12.23 (2)\\myclinicserver\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|solutionrelative:doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|d:\\users\\horowitz\\desktop\\myclinic\\server\\4.12.23 (2)\\myclinicserver\\controllers\\patientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEFF7BC9-0EAC-4545-B73D-37014AC2D204}|MyClinicServer.csproj|solutionrelative:controllers\\patientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +43,92 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PatientsController.cs",
-              "DocumentMoniker": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23\\MyClinicServer\\Controllers\\PatientsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PatientsController.cs",
-              "ToolTip": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23\\MyClinicServer\\Controllers\\PatientsController.cs",
-              "RelativeToolTip": "Controllers\\PatientsController.cs",
-              "ViewState": "AQIAABQAAADAzMzMzMwmwBkAAAAFAAAA",
+              "Title": "Appointment.cs",
+              "DocumentMoniker": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\Appointment.cs",
+              "RelativeDocumentMoniker": "Appointment.cs",
+              "ToolTip": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\Appointment.cs",
+              "RelativeToolTip": "Appointment.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAgAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-04T20:51:32.582Z",
+              "WhenOpened": "2023-12-05T01:19:39.634Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "DoctorsController.cs",
+              "DocumentMoniker": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\Controllers\\DoctorsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DoctorsController.cs",
+              "ToolTip": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\Controllers\\DoctorsController.cs",
+              "RelativeToolTip": "Controllers\\DoctorsController.cs",
+              "ViewState": "AQIAAGYAAAAAmZmZmZkdwHYAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-05T00:22:25.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Patient.cs",
-              "DocumentMoniker": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23\\MyClinicServer\\Patient.cs",
+              "DocumentMoniker": "D:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\Patient.cs",
               "RelativeDocumentMoniker": "Patient.cs",
-              "ToolTip": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23\\MyClinicServer\\Patient.cs",
+              "ToolTip": "D:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\Patient.cs",
               "RelativeToolTip": "Patient.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAmAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2023-12-04T20:42:55.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppointmentsController.cs",
+              "DocumentMoniker": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\Controllers\\AppointmentsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AppointmentsController.cs",
+              "ToolTip": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\Controllers\\AppointmentsController.cs",
+              "RelativeToolTip": "Controllers\\AppointmentsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-05T01:23:54.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WorkDay.cs",
+              "DocumentMoniker": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\WorkDay.cs",
+              "RelativeDocumentMoniker": "WorkDay.cs",
+              "ToolTip": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\WorkDay.cs",
+              "RelativeToolTip": "WorkDay.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-05T01:16:14.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Doctor.cs",
+              "DocumentMoniker": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\Doctor.cs",
+              "RelativeDocumentMoniker": "Doctor.cs",
+              "ToolTip": "d:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\Doctor.cs",
+              "RelativeToolTip": "Doctor.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-05T00:22:13.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PatientsController.cs",
+              "DocumentMoniker": "D:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\Controllers\\PatientsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PatientsController.cs",
+              "ToolTip": "D:\\Users\\Horowitz\\Desktop\\MyClinic\\server\\4.12.23 (2)\\MyClinicServer\\Controllers\\PatientsController.cs",
+              "RelativeToolTip": "Controllers\\PatientsController.cs",
+              "ViewState": "AQIAAAcAAAAgMzMzMzMrwFwAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-04T20:51:32.582Z",
               "EditorCaption": ""
             }
           ]

@@ -42,7 +42,7 @@ public class PatientsController : ControllerBase
 
     // GET: api/Patients/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<Patient>> GetPatient(int id)
+    public async Task<ActionResult> GetPatient(int id)
     {
         var patient = await _context.Patient.FindAsync(id);
 
@@ -51,7 +51,19 @@ public class PatientsController : ControllerBase
             return NotFound();
         }
 
-        return patient;
+        string? Gender = Enum.GetName(typeof(Gender), patient.Gender);
+
+        return Ok(new
+        {
+            patient.Id,
+            Gender,
+            patient.DateOfBirth,
+            patient.Name,
+            patient.Address,
+            patient.Email,
+            patient.Phone
+
+        });
     }
 
     // PUT: api/Patients/5

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyClinicServer.Data;
 
@@ -11,9 +12,11 @@ using MyClinicServer.Data;
 namespace MyClinicServer.Migrations
 {
     [DbContext(typeof(MyClinicServerContext))]
-    partial class MyClinicServerContextModelSnapshot : ModelSnapshot
+    [Migration("20231205012703_mssql.local_migration_350")]
+    partial class mssqllocal_migration_350
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +39,7 @@ namespace MyClinicServer.Migrations
                     b.Property<DateTime?>("CancelledDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("CreatedDate")
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateOnly>("Date")
@@ -48,7 +51,7 @@ namespace MyClinicServer.Migrations
                     b.Property<TimeOnly>("End")
                         .HasColumnType("time");
 
-                    b.Property<int?>("PatientId")
+                    b.Property<int>("PatientId")
                         .HasColumnType("int");
 
                     b.Property<string>("Subject")

@@ -23,9 +23,32 @@ namespace MyClinicServer.Controllers
 
         // GET: api/Doctors
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Doctor>>> GetDoctor()
+        public async Task<ActionResult> GetDoctor()
         {
-            return await _context.Doctor.ToListAsync();
+            return Ok(
+                from d in (await _context.Doctor.Include(doctor => doctor.WorkWeekDays).ToListAsync())
+                join s in (await _context.Specialization.ToListAsync())
+                    on d.SpecializationId equals s.Id
+                let wwds = (
+                            from wwd in d.WorkWeekDays
+                            let dayOfWeek = Enum.GetName(typeof(DayOfWeek), wwd.DayOfWeek)
+                            select new
+                            {
+                                dayOfWeek,
+                                wwd.Begin,
+                                wwd.End
+                            }
+                )
+                select new
+                {
+                    d.Id,
+                    d.Name,
+                    Specialization = s.Name,
+                    d.AppointmentDuration,
+                    WorkWeekDays = wwds,
+                    d.WorkDays
+                }
+            );
         }
 
         // GET: api/Doctors/5
@@ -78,8 +101,39 @@ namespace MyClinicServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Doctor>> PostDoctor(Doctor doctor)
         {
+            for (var date = DateTime.Now; date < DateTime.Now.AddYears(1); date = date.AddDays(1))
+            {
+                foreach (WorkWeekDay wwd in doctor.WorkWeekDays)
+                {
+                    if (date.DayOfWeek != wwd.DayOfWeek) continue;
+                    WorkDay wd = new WorkDay()
+                    {
+                        Date = DateOnly.FromDateTime(date),
+                        Begin = wwd.Begin,
+                        End = wwd.End
+                    };
+                    int numAppointments = (int)Math.Floor((wwd.End - wwd.Begin) / doctor.AppointmentDuration);
+                    for (int i = 0; i < numAppointments; i++)
+                    {
+                        wd.Appointments.Add(
+                            new Appointment()
+                            {
+                                PatientId = null,
+                                Date = wd.Date,
+                                Begin = wd.Begin.Add(i * doctor.AppointmentDuration),
+                                End = wd.Begin.Add((i + 1) * doctor.AppointmentDuration)
+                            }
+                        );
+                    }
+                    doctor.WorkDays.Add(wd);
+                    break;
+                }
+            }
+
             _context.Doctor.Add(doctor);
             await _context.SaveChangesAsync();
+
+
 
             return CreatedAtAction("GetDoctor", new { id = doctor.Id }, doctor);
         }
