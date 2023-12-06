@@ -101,7 +101,7 @@ namespace MyClinicServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Doctor>> PostDoctor(Doctor doctor)
         {
-            for (var date = DateTime.Now; date < DateTime.Now.AddYears(1); date = date.AddDays(1))
+            for (var date = DateTime.Now; date < DateTime.Now.AddMonths(1); date = date.AddDays(1))
             {
                 foreach (WorkWeekDay wwd in doctor.WorkWeekDays)
                 {
@@ -119,7 +119,7 @@ namespace MyClinicServer.Controllers
                             new Appointment()
                             {
                                 PatientId = null,
-                                Date = wd.Date,
+                                //Date = wd.Date,
                                 Begin = wd.Begin.Add(i * doctor.AppointmentDuration),
                                 End = wd.Begin.Add((i + 1) * doctor.AppointmentDuration)
                             }

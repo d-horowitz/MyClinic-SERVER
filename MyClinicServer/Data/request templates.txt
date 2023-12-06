@@ -1,0 +1,31 @@
+DOCTOR POST:
+{
+  "appointmentDuration": "hh:mm:ss",
+  "workWeekDays": [
+    {
+      "dayOfWeek": 0-5 (sun-fri),
+      "begin": "hh:mm:ss",
+      "end": "hh:mm:ss"
+    }
+  ],
+  "workDays": [],
+  "name": "Dr. Lorem Ipsum",
+  "specializationId": number
+}
+
+
+POST SPECIALIZATION:
+{
+  "name": "string"
+}
+
+POST PATIENT:
+{
+  "id": 123456789,
+  "gender": 1-2(gender enum male\female),
+  "name": "Israel Israeli",
+  "dateOfBirth": "2020-12-31T23:59:59.999Z",
+  "address": "100 Hertzl st., Jerusalem",
+  "phone": "02-5123456",
+  "email": "israelisraeli@gmail.com"
+}

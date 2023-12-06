@@ -8,7 +8,7 @@ public class Appointment
     public string? Description { get; set; }
     public DateTime? CreatedDate { get; set; }
     public DateTime? CancelledDate { get; set; }
-    public DateOnly Date { get; set; }
     public TimeOnly Begin { get; set; }
     public TimeOnly End { get; set; }
+    public int WorkDayId { get; set; }
 }

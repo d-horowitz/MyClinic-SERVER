@@ -7,4 +7,5 @@ public class WorkDay
     public TimeOnly Begin {  get; set; }
     public TimeOnly End {  get; set; }
     public List<Appointment> Appointments { get; set; } = [];
+    public int DoctorId { get; set; }
 }
