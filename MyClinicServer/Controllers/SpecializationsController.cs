@@ -41,6 +41,17 @@ namespace MyClinicServer.Controllers
             return specialization;
         }
 
+        // GET: api/Specializations/5/doctors
+        [HttpGet("{id}/doctors")]
+        public ActionResult GetSpecializedDoctors(int id)
+        {
+            return Ok(
+                from d in _context.Doctor
+                where d.SpecializationId == id
+                select d
+                );
+        }
+
         // PUT: api/Specializations/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

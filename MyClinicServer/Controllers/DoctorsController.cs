@@ -65,6 +65,40 @@ namespace MyClinicServer.Controllers
             return doctor;
         }
 
+
+        // GET: api/Doctors/5/schedule/2020-12-31T23:59:59.999Z
+        [HttpGet("{id}/schedule/{date}")]
+        public ActionResult<IEnumerable<WorkDay>> GetDoctorSchedule(int id, DateOnly date)
+        {
+            /*var doctor = await _context.Doctor.FindAsync(id);
+
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+
+            return doctor;*/
+            return (
+                from wd in _context.WorkDay
+                where wd.DoctorId == id && wd.Date > date
+                let apps = (
+                from app in _context.Appointment
+                where wd.Id == app.WorkDayId
+                select app
+                ).ToList()
+                select new WorkDay()
+                {
+                    Id = wd.Id,
+                    Date = wd.Date,
+                    Begin = wd.Begin,
+                    End = wd.End,
+                    Appointments = apps,
+                    DoctorId = wd.DoctorId
+                }
+            ).ToList();
+
+        }
+
         // PUT: api/Doctors/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
