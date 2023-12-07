@@ -73,6 +73,41 @@ namespace MyClinicServer.Controllers
             return NoContent();
         }
 
+
+        // PUT: api/Appointments/1016/make/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}/make/{patientId}")]
+        public async Task<IActionResult> MakeAppointment(int id, int patientId)
+        {
+            Appointment? appointment = await _context.Appointment.FindAsync(id);
+            if (appointment == null || appointment.PatientId != null)
+            {
+                return BadRequest();
+            }
+            appointment.PatientId = patientId;
+            appointment.CreatedDate = DateTime.Now;
+
+            _context.Entry(appointment).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AppointmentExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
         // POST: api/Appointments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]

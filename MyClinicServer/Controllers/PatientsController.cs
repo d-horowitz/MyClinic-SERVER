@@ -60,18 +60,19 @@ public class PatientsController : ControllerBase
              on wd.DoctorId equals d.Id
              join s in await _context.Specialization.ToListAsync()
              on d.SpecializationId equals s.Id
-             where a.WorkDayId > 10//a.PatientId == id
+             where a.PatientId == id
+             orderby wd.Date, a.Begin
              select new {
                  a.Id,
                  a.PatientId,
                  a.Subject,
                  a.Description,
                  a.CreatedDate,
-                 a.CancelledDate,
                  a.Begin,
                  a.End,
                  a.WorkDayId,
                  wd.DoctorId,
+                 wd.Date,
                  doctorName = d.Name,
                  specialization = s.Name
         }
