@@ -420,7 +420,7 @@ INSERT [dbo].[Appointment] ([Id], [PatientId], [Subject], [Description], [Create
 GO
 INSERT [dbo].[Appointment] ([Id], [PatientId], [Subject], [Description], [CreatedDate], [CancelledDate], [Begin], [End], [WorkDayId]) VALUES (174, NULL, NULL, NULL, NULL, NULL, CAST(N'10:30:00' AS Time), CAST(N'10:50:00' AS Time), 12)
 GO
-INSERT [dbo].[Appointment] ([Id], [PatientId], [Subject], [Description], [CreatedDate], [CancelledDate], [Begin], [End], [WorkDayId]) VALUES (175, NULL, NULL, NULL, NULL, NULL, CAST(N'10:50:00' AS Time), CAST(N'11:10:00' AS Time), 12)
+INSERT [dbo].[Appointment] ([Id], [PatientId], [Subject], [Description], [CreatedDate], [CancelledDate], [Begin], [End], [WorkDayId]) VALUES (175, 123456789, NULL, NULL, CAST(N'2023-12-26T03:32:57.9040596' AS DateTime2), NULL, CAST(N'10:50:00' AS Time), CAST(N'11:10:00' AS Time), 12)
 GO
 INSERT [dbo].[Appointment] ([Id], [PatientId], [Subject], [Description], [CreatedDate], [CancelledDate], [Begin], [End], [WorkDayId]) VALUES (176, NULL, NULL, NULL, NULL, NULL, CAST(N'11:10:00' AS Time), CAST(N'11:30:00' AS Time), 12)
 GO
@@ -736,7 +736,11 @@ INSERT [dbo].[Appointment] ([Id], [PatientId], [Subject], [Description], [Create
 GO
 SET IDENTITY_INSERT [dbo].[Appointment] OFF
 GO
+INSERT [dbo].[Patient] ([Id], [Gender], [Name], [DateOfBirth], [Address], [Phone], [Email]) VALUES (123123123, 1, N'Lorem Ipsum', CAST(N'2000-12-31T12:34:56.0000000' AS DateTime2), N'Dolor Sit., Amet', N'123-456-789', N'loremipsum@dolor.sit')
+GO
 INSERT [dbo].[Patient] ([Id], [Gender], [Name], [DateOfBirth], [Address], [Phone], [Email]) VALUES (123456789, 1, N'Israel Israeli', CAST(N'2020-12-31T23:59:59.9990000' AS DateTime2), N'100 Hertzl st., Jerusalem', N'02-5123456', N'israelisraeli@gmail.com')
+GO
+INSERT [dbo].[Patient] ([Id], [Gender], [Name], [DateOfBirth], [Address], [Phone], [Email]) VALUES (987654321, 2, N'לורמה איפסומה', CAST(N'2000-01-01T00:00:00.0000000' AS DateTime2), N'רח'' דולור סיט, אמט', N'987-654-321', N'lrmispm@dlr.st')
 GO
 SET IDENTITY_INSERT [dbo].[Specialization] ON 
 GO
