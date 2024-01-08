@@ -23,18 +23,18 @@ namespace MyClinicServer.Controllers
 
         // GET: api/Doctors
         [HttpGet]
-        public async Task<ActionResult> GetDoctor()
+        public ActionResult GetDoctor()
         {
             return Ok(
-                from d in (await _context.Doctor.Include(doctor => doctor.WorkWeekDays).ToListAsync())
-                join s in (await _context.Specialization.ToListAsync())
+                from d in _context.Doctor.Include(doctor => doctor.WorkWeekDays)
+                join s in _context.Specialization
                     on d.SpecializationId equals s.Id
                 let wwds = (
                             from wwd in d.WorkWeekDays
-                            let dayOfWeek = Enum.GetName(typeof(DayOfWeek), wwd.DayOfWeek)
+                                //let dayOfWeek = Enum.GetName(typeof(DayOfWeek), wwd.DayOfWeek)
                             select new
                             {
-                                dayOfWeek,
+                                //dayOfWeek,
                                 wwd.Begin,
                                 wwd.End
                             }
@@ -55,14 +55,43 @@ namespace MyClinicServer.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Doctor>> GetDoctor(int id)
         {
-            var doctor = await _context.Doctor.FindAsync(id);
+            //var doctor = await _context.Doctor.FindAsync(id);
 
-            if (doctor == null)
+            //if (doctor == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //return doctor;
+            var doctor = (
+                from d in await (_context.Doctor.Include(doctor => doctor.WorkWeekDays).ToListAsync())
+                where d.Id == id
+                join s in _context.Specialization
+                    on d.SpecializationId equals s.Id
+                let wwds = (
+                            from wwd in d.WorkWeekDays
+                            let dayOfWeek = Enum.GetName(typeof(DayOfWeek), wwd.DayOfWeek)
+                            select new
+                            {
+                                dayOfWeek,// = Enum.GetName(typeof(DayOfWeek), wwd.DayOfWeek),
+                                wwd.Begin,
+                                wwd.End
+                            }
+                )
+                select new
+                {
+                    d.Id,
+                    d.Name,
+                    Specialization = s.Name,
+                    d.AppointmentDuration,
+                    WorkWeekDays = wwds,
+                    d.WorkDays
+                });
+            if (!doctor.Any())
             {
                 return NotFound();
             }
-
-            return doctor;
+            return Ok(doctor.ElementAt(0));
         }
 
 
