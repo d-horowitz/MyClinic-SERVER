@@ -34,7 +34,7 @@ namespace MyClinicServer.Controllers
                                 //let dayOfWeek = Enum.GetName(typeof(DayOfWeek), wwd.DayOfWeek)
                             select new
                             {
-                                //dayOfWeek,
+                                wwd.DayOfWeek,//dayOfWeek,
                                 wwd.Begin,
                                 wwd.End
                             }
@@ -53,7 +53,7 @@ namespace MyClinicServer.Controllers
 
         // GET: api/Doctors/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Doctor>> GetDoctor(int id)
+        public ActionResult<Doctor> GetDoctor(int id)
         {
             //var doctor = await _context.Doctor.FindAsync(id);
 
@@ -64,16 +64,16 @@ namespace MyClinicServer.Controllers
 
             //return doctor;
             var doctor = (
-                from d in await (_context.Doctor.Include(doctor => doctor.WorkWeekDays).ToListAsync())
+                from d in _context.Doctor.Include(doctor => doctor.WorkWeekDays)
                 where d.Id == id
                 join s in _context.Specialization
                     on d.SpecializationId equals s.Id
                 let wwds = (
                             from wwd in d.WorkWeekDays
-                            let dayOfWeek = Enum.GetName(typeof(DayOfWeek), wwd.DayOfWeek)
+                            //let dayOfWeek = Enum.GetName(typeof(DayOfWeek), wwd.DayOfWeek)
                             select new
                             {
-                                dayOfWeek,// = Enum.GetName(typeof(DayOfWeek), wwd.DayOfWeek),
+                                wwd.DayOfWeek,//dayOfWeek,// = Enum.GetName(typeof(DayOfWeek), wwd.DayOfWeek),
                                 wwd.Begin,
                                 wwd.End
                             }
