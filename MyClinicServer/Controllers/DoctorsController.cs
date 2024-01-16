@@ -64,13 +64,13 @@ namespace MyClinicServer.Controllers
 
             //return doctor;
             var doctor = (
-                from d in _context.Doctor.Include(doctor => doctor.WorkWeekDays)
+                from d in _context.Doctor.Include(doctor => doctor.WorkWeekDays).Include(doctor => doctor.WorkDays)
                 where d.Id == id
                 join s in _context.Specialization
                     on d.SpecializationId equals s.Id
                 let wwds = (
                             from wwd in d.WorkWeekDays
-                            //let dayOfWeek = Enum.GetName(typeof(DayOfWeek), wwd.DayOfWeek)
+                                //let dayOfWeek = Enum.GetName(typeof(DayOfWeek), wwd.DayOfWeek)
                             select new
                             {
                                 wwd.DayOfWeek,//dayOfWeek,// = Enum.GetName(typeof(DayOfWeek), wwd.DayOfWeek),
@@ -95,7 +95,7 @@ namespace MyClinicServer.Controllers
         }
 
 
-        // GET: api/Doctors/5/schedule/2020-12-31T23:59:59.999Z
+        // GET: api/Doctors/5/schedule/2020-12-31
         [HttpGet("{id}/schedule/{date}")]
         public ActionResult<IEnumerable<WorkDay>> GetDoctorSchedule(int id, DateOnly date)
         {
@@ -107,13 +107,17 @@ namespace MyClinicServer.Controllers
             }
 
             return doctor;*/
+            while (date.DayOfWeek != DayOfWeek.Sunday)
+            {
+                date = date.AddDays(-1);
+            }
             return (
                 from wd in _context.WorkDay
-                where wd.DoctorId == id && wd.Date > date
+                where wd.DoctorId == id && wd.Date >= date && wd.Date <= date.AddDays(5)
                 let apps = (
-                from app in _context.Appointment
-                where wd.Id == app.WorkDayId
-                select app
+                    from app in _context.Appointment
+                    where wd.Id == app.WorkDayId
+                    select app
                 ).ToList()
                 select new WorkDay()
                 {

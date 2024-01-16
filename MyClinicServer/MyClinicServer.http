@@ -8,3 +8,7 @@ Accept: application/json
 GET {{MyClinicServer_HostAddress}}/api/patients
 
 ###
+
+GET {{MyClinicServer_HostAddress}}/api/doctors/2/schedule/2023-12-31
+
+###
