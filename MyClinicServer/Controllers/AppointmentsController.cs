@@ -42,6 +42,45 @@ namespace MyClinicServer.Controllers
             return appointment;
         }
 
+        // GET: api/Appointments/patient/5/from/2020-12-31
+        [HttpGet("patient/{patientId}/from/{date}")]
+        public async Task<ActionResult> GetPatientAppointment(int patientId, DateOnly date)
+        {
+            while (date.DayOfWeek != DayOfWeek.Sunday)
+            {
+                date = date.AddDays(-1);
+            }
+            var x = new List<object>(6) { };
+            for (int i = 0; i < 6; i++)
+            {
+                x.Add(
+                    new
+                    {
+                        date = date.AddDays(i),
+                        appointments = await (
+                            from app in _context.Appointment
+                            join wd in _context.WorkDay on app.WorkDayId equals wd.Id
+                            join d in _context.Doctor on wd.DoctorId equals d.Id
+                            join s in _context.Specialization on d.SpecializationId equals s.Id
+                            where wd.Date.Equals(date.AddDays(i)) && app.PatientId == patientId
+                            select new
+                            {
+                                app.Id,
+                                app.CreatedDate,
+                                app.Begin,
+                                app.End,
+                                app.Subject,
+                                app.Description,
+                                doctor = d.Name,
+                                specialization = s.Name
+                            }
+                        ).ToListAsync()
+                    }
+                );
+            }
+            return Ok(x);
+        }
+
         // PUT: api/Appointments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

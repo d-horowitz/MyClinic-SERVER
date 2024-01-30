@@ -52,31 +52,31 @@ public class PatientsController : ControllerBase
         }
 
         string? Gender = Enum.GetName(typeof(Gender), patient.Gender);
-        var appointments = (
-             from a in await _context.Appointment.ToListAsync()
-             join wd in await _context.WorkDay.ToListAsync()
-             on a.WorkDayId equals wd.Id
-             join d in await _context.Doctor.ToListAsync()
-             on wd.DoctorId equals d.Id
-             join s in await _context.Specialization.ToListAsync()
-             on d.SpecializationId equals s.Id
-             where a.PatientId == id
-             orderby wd.Date, a.Begin
-             select new {
-                 a.Id,
-                 a.PatientId,
-                 a.Subject,
-                 a.Description,
-                 a.CreatedDate,
-                 a.Begin,
-                 a.End,
-                 a.WorkDayId,
-                 wd.DoctorId,
-                 wd.Date,
-                 doctorName = d.Name,
-                 specialization = s.Name
-        }
-         ).ToList();
+        //var appointments = (
+        //     from a in await _context.Appointment.ToListAsync()
+        //     join wd in await _context.WorkDay.ToListAsync()
+        //     on a.WorkDayId equals wd.Id
+        //     join d in await _context.Doctor.ToListAsync()
+        //     on wd.DoctorId equals d.Id
+        //     join s in await _context.Specialization.ToListAsync()
+        //     on d.SpecializationId equals s.Id
+        //     where a.PatientId == id
+        //     orderby wd.Date, a.Begin
+        //     select new {
+        //         a.Id,
+        //         a.PatientId,
+        //         a.Subject,
+        //         a.Description,
+        //         a.CreatedDate,
+        //         a.Begin,
+        //         a.End,
+        //         a.WorkDayId,
+        //         wd.DoctorId,
+        //         wd.Date,
+        //         doctorName = d.Name,
+        //         specialization = s.Name
+        //}
+        // ).ToList();
 
         return Ok(new
         {
@@ -87,7 +87,7 @@ public class PatientsController : ControllerBase
             patient.Address,
             patient.Email,
             patient.Phone,
-            appointments
+            //appointments
         });
     }
 
