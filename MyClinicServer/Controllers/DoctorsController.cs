@@ -97,7 +97,7 @@ namespace MyClinicServer.Controllers
 
         // GET: api/Doctors/5/schedule/2020-12-31
         [HttpGet("{id}/schedule/{date}")]
-        public ActionResult<IEnumerable<WorkDay>> GetDoctorSchedule(int id, DateOnly date)
+        public async Task<ActionResult<IEnumerable<WorkDay>>> GetDoctorSchedule(int id, DateOnly date)
         {
             /*var doctor = await _context.Doctor.FindAsync(id);
 
@@ -107,7 +107,7 @@ namespace MyClinicServer.Controllers
             }
 
             return doctor;*/
-            while (date.DayOfWeek != DayOfWeek.Sunday)
+            /*while (date.DayOfWeek != DayOfWeek.Sunday)
             {
                 date = date.AddDays(-1);
             }
@@ -128,7 +128,42 @@ namespace MyClinicServer.Controllers
                     Appointments = apps,
                     DoctorId = wd.DoctorId
                 }
-            ).ToList();
+            ).ToList();*/
+            while (date.DayOfWeek != DayOfWeek.Sunday)
+            {
+                date = date.AddDays(-1);
+            }
+            var calendar = new List<object>(6) { };
+            for (int i = 0; i < 6; i++)
+            {
+                calendar.Add(
+                    new
+                    {
+                        date = date.AddDays(i),
+                        dayOfWeek = date.AddDays(i).DayOfWeek,
+                        appointments = await (
+                            from app in _context.Appointment
+                            join wd in _context.WorkDay on app.WorkDayId equals wd.Id
+                            join d in _context.Doctor on wd.DoctorId equals d.Id
+                            join s in _context.Specialization on d.SpecializationId equals s.Id
+                            where wd.Date.Equals(date.AddDays(i)) && wd.DoctorId == id
+                            select new
+                            {
+                                app.Id,
+                                app.PatientId,
+                                app.CreatedDate,
+                                app.Begin,
+                                app.End,
+                                app.Subject,
+                                app.Description,
+                                doctor = d.Name,
+                                specialization = s.Name
+                            }
+                        ).ToListAsync()
+                    }
+                );
+            }
+            return Ok(calendar);
 
         }
 

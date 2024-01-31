@@ -50,13 +50,14 @@ namespace MyClinicServer.Controllers
             {
                 date = date.AddDays(-1);
             }
-            var x = new List<object>(6) { };
+            var calendar = new List<object>(6) { };
             for (int i = 0; i < 6; i++)
             {
-                x.Add(
+                calendar.Add(
                     new
                     {
                         date = date.AddDays(i),
+                        dayOfWeek = date.AddDays(i).DayOfWeek,
                         appointments = await (
                             from app in _context.Appointment
                             join wd in _context.WorkDay on app.WorkDayId equals wd.Id
@@ -78,7 +79,7 @@ namespace MyClinicServer.Controllers
                     }
                 );
             }
-            return Ok(x);
+            return Ok(calendar);
         }
 
         // PUT: api/Appointments/5
