@@ -148,6 +148,42 @@ namespace MyClinicServer.Controllers
             return NoContent();
         }
 
+        // PUT: api/Appointments/1016/cancel
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}/cancel")]
+        public async Task<IActionResult> CancelAppointment(int id, Appointment patient)
+        {
+            Appointment? appointment = await _context.Appointment.FindAsync(id);
+            if (appointment == null || appointment.PatientId != patient.PatientId)
+            {
+                return BadRequest();
+            }
+            appointment.PatientId = null;
+            appointment.CreatedDate = null;
+            appointment.Description = null;
+            appointment.Subject = null;
+
+            _context.Entry(appointment).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AppointmentExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
         // POST: api/Appointments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
