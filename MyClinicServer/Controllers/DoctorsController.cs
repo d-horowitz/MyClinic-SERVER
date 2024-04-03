@@ -143,6 +143,8 @@ namespace MyClinicServer.Controllers
                         dayOfWeek = date.AddDays(i).DayOfWeek,
                         appointments = await (
                             from app in _context.Appointment
+                            join p in _context.Patient on app.PatientId equals p.Id into ptemp
+                            from pat in ptemp.DefaultIfEmpty()
                             join wd in _context.WorkDay on app.WorkDayId equals wd.Id
                             join d in _context.Doctor on wd.DoctorId equals d.Id
                             join s in _context.Specialization on d.SpecializationId equals s.Id
@@ -151,6 +153,7 @@ namespace MyClinicServer.Controllers
                             {
                                 app.Id,
                                 app.PatientId,
+                                PatientName = pat == null ? "" : pat.Name,
                                 app.CreatedDate,
                                 app.Begin,
                                 app.End,
